@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+    <div class="pb-20">
+        <div class="card">
+  <div class="card-body">
+
+  <div class="form-row">
+    <div class="col-7">
+      <input type="text" class="form-control" placeholder="Customer Name">
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target=".add-product-modal">Add Product</button>
+
+<div class="modal fade add-product-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Item List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+      <th scope="row">
+        The International Society of Plastic and Aesthetic Nurses THE definitive voice
+      </th>
+      <td>
+        1000000
+      </td>
+      <td>
+        <input type="number" name="iqty" id="iqty" class="form-control w-75">
+      </td>
+      <td>
+        <button type="submit" class="btn btn-success">Add</button>
+      </td>
+    </tr>
+
+  <tr>
+      <th scope="row">
+        The International Society of Plastic and Aesthetic Nurses THE definitive voice
+      </th>
+      <td>
+        1000000
+      </td>
+      <td>
+        <input type="number" name="iqty" id="iqty2" class="form-control w-75">
+      </td>
+      <td>
+        <button type="submit" class="btn btn-success">Add</button>
+      </td>
+    </tr>
+  <tr>
+      <th scope="row">
+        The International Society of Plastic and Aesthetic Nurses THE definitive voice
+      </th>
+      <td>
+        1000000
+      </td>
+      <td>
+        <input type="number" name="iqty" id="iqty3" class="form-control w-75">
+      </td>
+      <td>
+        <button type="submit" class="btn btn-success">Add</button>
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+  </div>
+      <hr>
+
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
+      <td>
+          <button type="submit" class="btn btn-block btn-primary">Create Invoice</button>
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+  </div>
+</div>
+
+    </div>
+</div>
+
+
+
+{% endblock content %}

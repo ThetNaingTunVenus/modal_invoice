@@ -1,0 +1,43 @@
+<script>
+    //SaveData
+    $('#btnsave').click(function(){
+        // console.log('SaveBtn Click');
+        let n = $('#id_name').val();
+        let e = $('#id_email').val();
+        let p = $('#id_phone').val();
+        if(n==""){
+            console.log('Enter Name');
+        }else if(e == ""){
+            console.log('Enter Email');
+        }else if(p ==""){
+            console.log('Enter Phone');
+        }else{
+            // console.log(n+e+p);
+            mydata = {name:n, email:e, phone:p};
+            $.ajax({
+                url: "{% url 'save' %}",
+                method: "POST",
+                data:mydata,
+                success: function(data){
+                    // console.log(data.status)
+                    x=data.stu_data;
+                    if(data.status == 'success'){
+                        console.log('Success')
+                        for(i=0; i<x.length; i++){
+                            output = []
+                            output+="<td>"+x[i].id+"</td><td>"+x[i].name+"</td><td>"+x[i].email+"</td><td>"+x[i].phone+"</td><td><input type='button' value='edit' class='btn btn-warning btn-edit' data-sid="+"'"+x[i].id+"'"+">"+"</td>"
+
+                        }
+                        $('#trow').html(output);
+                        $('form')[0].reset();
+
+
+                    }
+                    if(data.status == 'error'){
+                        console.log('Unable to Save')
+                    }
+                },
+            });
+        }
+    })
+</script>
