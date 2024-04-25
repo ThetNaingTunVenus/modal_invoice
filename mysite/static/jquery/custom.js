@@ -1,5 +1,8 @@
 
 
+
+
+
 $(document).ready(function(){
 
     $("#itmlist").on('click', '.itmAdd', function() {
@@ -12,8 +15,22 @@ $(document).ready(function(){
   var colid = currentRow.find(".itmid").html(); 
   var iqty = currentRow.find("input").val(); 
 
-  var data = col1 + "" + col2;
+  var pri = parseInt(col2);
+  var qt = parseInt(iqty);
+  var amt = pri * qt;
 
-  alert(iqty);
+  mydata = {itmname:col1, price:pri, qty:qy, amont:amt};
+  $.ajax({
+    url: "{% url 'save_invitm' %}",
+    method: "POST",
+    data:mydata,
+    success: function(data){
+    },
+                    // console.log(data.status)
+  });
+
+
+
+//  alert(m);
 });
 });

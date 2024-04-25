@@ -5,4 +5,5 @@ app_name = 'myapp'
 urlpatterns = [
     path('test/', views.test, name = 'test'),
     path('saleview/', saleview.as_view(), name='saleview'),
+    path('save_invitm/', views.save_invitm, name= 'save_invitm'),
 ]

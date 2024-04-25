@@ -45,6 +45,21 @@
 
 
 
+@csrf_exempt
+def save_data(request):
+    if request.method =='POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            name = request.POST['name']
+            email = request.POST['email']
+            phone = request.POST['phone']
+            s = Student(name=name, email=email, phone=phone)
+            s.save()
+            stu = Student.objects.values()
+            stu_data = list(stu)
+            return JsonResponse({'status':'success','stu_data':stu_data})
+        else:
+            return JsonResponse({'status':'error'})
 
 
 //*
