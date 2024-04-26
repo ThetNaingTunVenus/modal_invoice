@@ -11,12 +11,20 @@
   <div class="form-row">
 
     <div class="col-7">
-
-<!--      <input type="text" class="form-control" placeholder="Customer Name">-->
-        <button type="button" class="btn btn-outline-success" id="createNewVou">Create New Voucher</button>
+      {% if cart %}
+      <h4>Customer Name : {{cart}}</h4>
+      {% else %}
+      <input type="text" class="form-control" placeholder="Customer Name" id="cusName">
+      {% endif %}
+      
+      
+      
+        <!-- <button type="button" class="btn btn-outline-success" id="createNewVou">Create New Voucher</button> -->
+      
+      
     </div>
     <div class="col">
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target=".add-product-modal">Add Product</button>
+      <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target=".add-product-modal">Add Product</button> -->
 
 <div class="modal fade add-product-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -79,27 +87,38 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col"class="text-right">Quantity</th>
+      <th scope="col"class="text-right">Rate</th>
+      <th scope="col" class="text-right">Amount</th>
     </tr>
   </thead>
   <tbody>
     {% for inv in invitem %}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{inv.item}}</th>
+      <td class="text-right">{{inv.qty}}</td>
+      <td class="text-right">{{inv.rate}}</td>
+      <td class="text-right">{{inv.amount}}</td>
     </tr>
     {% endfor %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="text-right">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target=".add-product-modal">Add Product</button>
+      </td>
+    </tr>
     
     <tr>
       <th scope="row"></th>
       <td></td>
-      <td></td>
       <td>
-          <button type="submit" class="btn btn-block btn-primary">Create Invoice</button>
+        
+      </td>
+      <td class="text-right">
+
+          <button type="submit" class="btn btn-primary">Create Invoice</button>
       </td>
     </tr>
 

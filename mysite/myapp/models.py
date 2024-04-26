@@ -23,7 +23,7 @@ class invoice(models.Model):
         return self.customer
 
 class invitem(models.Model):
-    invoice = models.ForeignKey(invoice, models.CASCADE)
+    inv = models.ForeignKey(invoice, on_delete=models.CASCADE)
     item = models.CharField(max_length=255)
     qty = models.PositiveIntegerField(default=0)
     rate = models.PositiveIntegerField(default=0)
