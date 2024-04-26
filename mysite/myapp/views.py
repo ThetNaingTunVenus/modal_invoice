@@ -25,6 +25,22 @@ class saleview(TemplateView):
         return context
 
 
+class pos_view(TemplateView):
+    template_name= 'pos_view.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart_id = self.request.session.get('cart_id', None)
+        if cart_id:
+            cart = invoice.objects.get(id=cart_id)
+        else:
+            cart = None
+        context['cart'] = cart
+        context['itm'] = item.objects.all()
+        context['invitem'] = invitem.objects.filter(inv=cart)
+                
+        return context
+
+
 # @csrf_exempt
 def save_invitm(request, *args, **kwargs):
     if request.method =='GET':
