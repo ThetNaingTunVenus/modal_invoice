@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from .models import *
-from django.views.generic import TemplateView, View, DeleteView
+from django.views.generic import TemplateView, View, DeleteView,DetailView
 from django.core import serializers
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -37,6 +37,7 @@ class pos_view(TemplateView):
         context['cart'] = cart
         context['itm'] = item.objects.all()
         context['invitem'] = invitem.objects.filter(inv=cart)
+        context['cart_id'] = cart_id
                 
         return context
 
@@ -77,3 +78,31 @@ def save_invitm(request, *args, **kwargs):
     else:
         return JsonResponse({'status':'error'})
 
+
+class invoiceview(TemplateView):
+    template_name = 'test_slip.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart_id = self.request.session.get('cart_id', None)
+        if cart_id:
+            cart = invoice.objects.get(id=cart_id)
+            inv_itm = invitem.objects.filter(inv=cart)
+        else:
+            cart = None
+        context['cart'] = cart
+        context['itm'] = inv_itm
+        return context
+
+
+
+# class InvoiceThermalPrintView(DetailView):
+#     template_name = 'test_slip.html'
+#     model = invoice
+#     context_object_name = 'ord_obj'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         # context['allstatus'] = STATUS
+#
+#         return context

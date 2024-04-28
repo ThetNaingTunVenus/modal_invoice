@@ -2,96 +2,92 @@
 
 {% block content %}
 
-<h4>POS View</h4>
 <div class="row w-100">
-	<div class="col-md-4">
-		<h5>Vou Table</h5>
 
-    <table class="table table-hover table-bordered" id="invitmlist">
-  <thead>
-    <tr>
-      
-      <th scope="col">#</th>
-      <th scope="col"class="text-right">Quantity</th>
-      <th scope="col"class="text-right">Rate</th>
-      <th scope="col" class="text-right">Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for inv in invitem %}
-    <tr>
-    	
-      <th scope="row">{{inv.item}}</th>
-      <td class="text-right">{{inv.qty}}</td>
-      <td class="text-right">{{inv.rate}}</td>
-      <td class="text-right">{{inv.amount}}</td>
-    </tr>
-    {% endfor %}
-    <!-- <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td class="text-right">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target=".add-product-modal">Add Product</button>
-      </td>
-    </tr> -->
-    
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td>
-        
-      </td>
-      <td class="text-right">
+    <div class="col-md-8">
+        <h5>Vou Table</h5>
+        <table class="table table-hover table-bordered" id="itmlist">
+            <thead>
+            <tr>
+                <th>Photo</th>
+                <th scope="">Item Name</th>
+                <th>Price</th>
+                <th scope="" class="">Qty</th>
+                <th scope=""></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in itm %}
+            <tr>
+                <td>
+                    <img src="{{i.photo.url}}" width="100px">
+                </td>
+                <th scope="row">
 
-          <button type="submit" class="btn btn-primary">Create Invoice</button>
-      </td>
-    </tr>
+                    <span class="itmname1">{{i.slug}}</span>
+                    <span class="itmname" hidden>{{i.item_name}}</span>
+                </th>
+                <td>
 
+                    <span class="itmprice">{{i.price}}</span>
+                    <span class="itmid" hidden>{{i.id}}</span>
+                </td>
+                <td>
+                    <input type="number" name="iqty" class="form-control w-50 iqty">
+                </td>
+                <td>
 
-  </tbody>
-</table>
-	</div>
-	<div class="col-md-8">
-<h5>Vou Table</h5>
-		<table class="table table-hover table-bordered" id="itmlist">
-  <thead>
-    <tr>
-    	<th>Photo</th>
-      <th scope="">Item Name</th>
-      <th >Price</th>
-      <th scope="" class="">Qty</th>
-      <th scope=""></th>
-    </tr>
-  </thead>
-  <tbody>
-{% for i in itm %}
-  <tr>
-  	<td>
-  		<img src="{{i.photo.url}}" width="100px">
-  	</td>
-      <th scope="row">
-        
-        <span class="itmname">{{i.item_name}}</span>
-      </th>
-      <td>
-       
-        <span class="itmprice">{{i.price}}</span>
-        <span class="itmid" hidden>{{i.id}}</span>
-      </td>
-      <td>
-        <input type="number" name="iqty" class="form-control w-50 iqty">
-      </td>
-      <td>
-        
-        <button type="submit" class="btn btn-success itmAdd">Add</button>
-      </td>
-    </tr>
-{% endfor %}
+                    <button type="submit" class="btn btn-success itmAdd">Add</button>
+                </td>
+            </tr>
+            {% endfor %}
 
-  </tbody>
-</table>
-	</div>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <h5>Vou Table</h5>
+
+        <table class="table table-hover table-bordered" id="invitmlist">
+            <thead>
+            <tr>
+
+                <th scope="col">#</th>
+                <th scope="col" class="text-right">Quantity</th>
+                <th scope="col" class="text-right">Rate</th>
+                <th scope="col" class="text-right">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for inv in invitem %}
+            <tr>
+
+                <th scope="row">{{inv.item}}</th>
+                <td class="text-right">{{inv.qty}}</td>
+                <td class="text-right">{{inv.rate}}</td>
+                <td class="text-right">{{inv.amount}}</td>
+            </tr>
+            {% endfor %}
+            <!-- <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="text-right">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target=".add-product-modal">Add Product</button>
+              </td>
+            </tr> -->
+
+            </tbody>
+        </table>
+        <div>
+            <div id="cart_id">{{cart_id}}</div>
+            <button type="submit" class="btn btn-primary btn-block" id="createInvBtn">Create Invoice</button>
+        </div>
+
+    </div>
 </div>
+
+
+
 
 {% endblock content %}

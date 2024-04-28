@@ -1,0 +1,184 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--        <link rel="stylesheet" href="style.css">-->
+        <title>{{ord_obj.id}}</title>
+      <style>
+        * {
+    font-size: 12px;
+    font-family: 'Times New Roman';
+}
+
+td,
+th,
+tr,
+table {
+    border: 2px solid black;
+
+    border-collapse: collapse;
+    height: 50px;
+}
+
+td.description,
+th.description {
+    width: 350px;
+    max-width: 350px;
+    text-align: center;
+    align-content: center;
+    font-size : 16px;
+}
+td.sn,
+th.sn {
+    width: 40px;
+    max-width: 40px;
+    text-align : right;
+}
+
+td.quantity,
+th.quantity {
+    width: 100px;
+    max-width: 100px;
+    word-break: break-all;
+    text-align: center;
+}
+
+td.price,
+th.price {
+    width: 100px;
+    max-width: 100px;
+    word-break: break-all;
+    text-align: right;
+}
+
+td.unit,
+th.unit {
+    width: 50px;
+    max-width: 50px;
+    word-break: break-all;
+    text-align: center;
+}
+
+td.subtotal,
+th.subtotal {
+    width: 100px;
+    max-width: 100px;
+    word-break: break-all;
+    text-align: right;
+}
+
+
+.centered {
+    text-align: center;
+    align-content: center;
+}
+
+
+.headtitle{
+    font-size: 20px;
+}
+
+.oid
+{
+font-size:20px;
+font-weight : bold;
+}
+
+.odate
+{
+font-size:20px;
+margin-left : 480px;
+font-weight : bold;
+}
+
+.ticket {
+    width: 786px;
+    max-width: 768px;
+}
+
+img {
+    max-width: inherit;
+    width: inherit;
+}
+
+@media print {
+    .hidden-print,
+    .hidden-print * {
+        display: none !important;
+    }
+}
+      </style>
+
+    </head>
+    <body>
+        <div class="ticket">
+
+
+
+
+            <img src="{% static 'src/images/inv.png' %}" alt="inv_img" >
+
+            <span class="oid">Invoice : {{ord_obj.id}}</span>
+            <span class="odate">Date -{{ord_obj.created_at}}</span>
+
+
+            <br>
+            <span class="oid">
+            Name - {{ord_obj.ordered_by}}[{{ord_obj.id}}]
+                </span>
+            <hr>
+            <table>
+                <thead>
+                    <tr style="background-color:skyblue;">
+                        <th class="sn">SN</th>
+                        <th class="description">ItemName</th>
+                        <th class="price">Price</th>
+                        <th class="quantity">Qty</th>
+                        <th class="unit">Unit</th>
+                        <th class="subtotal">Amount</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                {% for p in ord_obj.invoice.invitem_set.all %}
+                    <tr>
+                        <td class="sn">{{forloop.counter}}</td>
+                        <td class="description">{{p.id}}</td>
+                        <td class="price">{{p.rate}}</td>
+                        <td class="quantity">{{p.qty}}</td>
+                        <td class="unit">{{p.amount}}</td>
+                        <td class="subtotal">{{p.subtotal}}</td>
+
+
+                    </tr>
+                {% endfor %}
+                    <tr>
+<!--                        <td class="sn"></td>-->
+                        <td colspan="5" style="text-align: right;"><strong>TOTAL </strong></td>
+                        <td class="subtotal">{{ord_obj.total}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td class="quantity"></td>
+                        <td class="description">Discount</td>
+                        <td class="price">{{ord_obj.discount}}</td>
+                    </tr> -->
+
+                </tbody>
+            </table>
+
+        </div>
+        <button id="btnPrint" class="hidden-print">Print</button>
+<!--        <script src="script.js"></script>-->
+    </body>
+    <script>
+      const $btnPrint = document.querySelector("#btnPrint");
+      $btnPrint.addEventListener("click", () => {
+      window.print();
+});
+    </script>
+</html>

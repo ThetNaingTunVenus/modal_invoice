@@ -46,4 +46,16 @@ $(document).ready(function(){
   //end ajax
 
 });
+
+
+//end add to cart
+
+
+//$( "#createInvBtn" ).on( "click", function() {
+//  alert( "Handler for `click` called." );
+//} );
+
+
 });
+
+
