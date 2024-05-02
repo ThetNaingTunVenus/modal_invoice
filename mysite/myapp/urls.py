@@ -7,6 +7,7 @@ urlpatterns = [
     path('saleview/', saleview.as_view(), name='saleview'),
     path('pos_view/', pos_view.as_view(), name='pos_view'),
     path('save_invitm/', views.save_invitm, name= 'save_invitm'),
+    path('invoicelist/', views.invoicelist, name='invoicelist'),
     path('invoiceview/<int:pk>/', InvoiceThermalPrintView.as_view(), name='invoiceview'),
 
 ]

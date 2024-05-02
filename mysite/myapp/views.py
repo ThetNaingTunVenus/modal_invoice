@@ -80,6 +80,15 @@ def save_invitm(request, *args, **kwargs):
 
 
 
+def invoicelist(request):
+    inm = invitem.objects.all()
+    invs = invoice.objects.all()
+    context = {'inv':inm, 'invs':invs}
+    return render(request, 'invoicelist.html', context)
+
+
+
+
 class InvoiceThermalPrintView(DetailView):
     template_name = 'test_slip.html'
     model = invoice
