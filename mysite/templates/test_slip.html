@@ -123,13 +123,13 @@ img {
 
             <img src="{% static 'src/images/inv.png' %}" alt="inv_img" >
 
-            <span class="oid">Invoice : {{ord_obj.id}}</span>
-            <span class="odate">Date -{{ord_obj.created_at}}</span>
+            <span class="oid">Invoice : </span>
+            <span class="odate">Date -</span>
 
 
             <br>
             <span class="oid">
-            Name - {{ord_obj.ordered_by}}[{{ord_obj.id}}]
+            Name -{{ord_obj.id}}
                 </span>
             <hr>
             <table>
@@ -145,7 +145,7 @@ img {
                     </tr>
                 </thead>
                 <tbody>
-                {% for p in ord_obj.invoice.invitem_set.all %}
+                {% for p in inv_itm %}
                     <tr>
                         <td class="sn">{{forloop.counter}}</td>
                         <td class="description">{{p.id}}</td>

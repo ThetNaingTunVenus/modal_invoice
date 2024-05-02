@@ -12,7 +12,7 @@
 
     <div class="col-7">
       {% if cart %}
-      <h4>Customer Name : {{cart}}</h4>
+      <h4>Customer Name : {{cart.customer}}</h4>
       {% else %}
       <input type="text" class="form-control" placeholder="Customer Name" id="cusName">
       {% endif %}
@@ -101,6 +101,14 @@
       <td class="text-right">{{inv.amount}}</td>
     </tr>
     {% endfor %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="text-right">
+        <h5>{{cart.total}}</h5>
+      </td>
+    </tr>
     <tr>
       <td></td>
       <td></td>

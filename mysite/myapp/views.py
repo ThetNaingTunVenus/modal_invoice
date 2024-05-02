@@ -79,30 +79,14 @@ def save_invitm(request, *args, **kwargs):
         return JsonResponse({'status':'error'})
 
 
-class invoiceview(TemplateView):
+
+class InvoiceThermalPrintView(DetailView):
     template_name = 'test_slip.html'
+    model = invoice
+    context_object_name = 'ord_obj'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        cart_id = self.request.session.get('cart_id', None)
-        if cart_id:
-            cart = invoice.objects.get(id=cart_id)
-            inv_itm = invitem.objects.filter(inv=cart)
-        else:
-            cart = None
-        context['cart'] = cart
-        context['itm'] = inv_itm
+        # context['ord_obj'] =
+
         return context
-
-
-
-# class InvoiceThermalPrintView(DetailView):
-#     template_name = 'test_slip.html'
-#     model = invoice
-#     context_object_name = 'ord_obj'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         # context['allstatus'] = STATUS
-#
-#         return context

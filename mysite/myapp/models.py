@@ -20,7 +20,7 @@ class invoice(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.customer
+        return f"{self.id}"
 
 class invitem(models.Model):
     inv = models.ForeignKey(invoice, on_delete=models.CASCADE)
